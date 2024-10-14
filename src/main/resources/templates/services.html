@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Bank Services</title>
+</head>
+<body>
+	<h1>
+		Services of <span th:text="${bankName}"></span>
+	</h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Service Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="service : ${services}">
+				<td th:text="${service.serviceName}"></td>
+			</tr>
+		</tbody>
+	</table>
+	<form th:action="@{/services/add}" th:object="${bankService}"
+		method="post">
+		<label for="serviceName">Service Name:</label> <input type="text"
+			id="serviceName" th:field="*{serviceName}" required />
+		<button type="submit">Add Service</button>
+	</form>
+</body>
+</html>
